@@ -1,20 +1,29 @@
+// src/CharacterInfo.tsx
 import React, { useEffect, useState, useCallback } from 'react';
 
 type Character = {
     name: {
         full: string;
+        native: string; // Added for Japanese name
     };
     description: string;
     image: {
         large: string;
     };
+    media?: {
+        nodes: {
+            title: {
+                romaji: string;
+            };
+        }[];
+    };
 };
 
 interface CharacterInfoProps {
-    initialSearch?: string;
+    initialSearch?: string; // Optional initial search term
 }
 
-const CharacterInfo: React.FC<CharacterInfoProps> = ({ initialSearch = '' }) => {
+const CharacterInfo: React.FC<CharacterInfoProps> = ({ initialSearch = 'Naruto' }) => {
     const [searchTerm, setSearchTerm] = useState<string>(initialSearch);
     const [character, setCharacter] = useState<Character | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
@@ -27,15 +36,23 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({ initialSearch = '' }) => 
 
         setLoading(true);
 
-        const query = `
+        const characterQuery = `
         query {
             Character(search: "${searchTerm}") {
                 name {
                     full
+                    native
                 }
                 description(asHtml: true)
                 image {
                     large
+                }
+                media {
+                    nodes {
+                        title {
+                            romaji
+                        }
+                    }
                 }
             }
         }`;
@@ -47,7 +64,7 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({ initialSearch = '' }) => 
                 'Content-Type': 'application/json',
                 Accept: 'application/json',
             },
-            body: JSON.stringify({ query }),
+            body: JSON.stringify({ query: characterQuery }),
         };
 
         try {
@@ -88,24 +105,30 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({ initialSearch = '' }) => 
 
     return (
         <div>
-            <h1> Anime Character Info</h1>
+            <h1>Character Info</h1>
             <div>
                 <input
                     type="text"
                     value={searchTerm}
                     onChange={handleInputChange}
-                    placeholder="Miyamoto Musashi..."
+                    placeholder="Enter character name and press Enter"
                 />
             </div>
             <div id="character-info">
                 {loading && <div>Loading...</div>}
                 {!loading && character && (
-                  <>
-                    <h2>{character.name.full}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: character.description }}></div>
-                    <img src={character.image.large} alt={character.name.full} />
-                  </>
+                    <>
+                        <h2>
+                            {character.name.full} ({character.name.native})
+                        </h2>
+                        {character.media && character.media.nodes.length > 0 && (
+                            <p><strong>From:</strong> {character.media.nodes[0].title.romaji}</p>
+                        )}
+                        <div dangerouslySetInnerHTML={{ __html: character.description }}></div>
+                        <img src={character.image.large} alt={character.name.full} />
+                    </>
                 )}
+                {!loading && !character && <div>No character found</div>}
             </div>
         </div>
     );
