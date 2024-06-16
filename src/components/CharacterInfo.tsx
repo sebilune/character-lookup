@@ -103,16 +103,23 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({ initialSearch = '' }) => 
         setSearchTerm(event.target.value);
     };
 
+    const handleSearchClick = () => {
+        fetchCharacter();
+    };
+
     return (
         <div>
             <h1>Anime Character Lookup</h1>
-            <div>
+            <div className="search-container">
                 <input
                     type="text"
                     value={searchTerm}
                     onChange={handleInputChange}
                     placeholder="Search for a character..."
                 />
+                <button onClick={handleSearchClick}>
+                    Search
+                </button>
             </div>
             <div id="character-info">
                 {loading && <div>Loading...</div>}
