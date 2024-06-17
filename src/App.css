@@ -30,16 +30,9 @@ input[type="text"]:focus {
   border: 1px solid #646cff;
 }
 
-
 h1 > svg {
   height: 1.4ch;
   margin-left: 0.5rem;
-}
-
-button > svg {
-  height: 3.4ch;
-  margin: 0;
-  width: 100%;
 }
 
 .search-container {
