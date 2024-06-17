@@ -1,5 +1,5 @@
 // src/CharacterInfo.tsx
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 
 type Character = {
     name: {
@@ -85,20 +85,6 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({ initialSearch = '' }) => 
         }
     }, [searchTerm]);
 
-    useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Enter') {
-                fetchCharacter();
-            }
-        };
-
-        document.addEventListener('keydown', handleKeyDown);
-
-        return () => {
-            document.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [fetchCharacter]);
-
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
     };
@@ -116,6 +102,7 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({ initialSearch = '' }) => 
                     value={searchTerm}
                     onChange={handleInputChange}
                     placeholder="Search for a character..."
+                    onKeyDown={(e) => {if (e.key === 'Enter') fetchCharacter();}}
                 />
                 <button onClick={handleSearchClick}>
                     Search
