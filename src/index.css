@@ -65,4 +65,7 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+  svg {
+    fill: #1a1a1a;
+  }
 }

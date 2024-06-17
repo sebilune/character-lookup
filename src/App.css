@@ -15,6 +15,10 @@ button {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+img {
+  border: 1px solid #646cff;
+}
+
 input[type="text"] {
   border: 1px solid rgba(0, 0, 0, 0.1);
   font-size: 18px;
@@ -30,9 +34,10 @@ input[type="text"]:focus {
   border: 1px solid #646cff;
 }
 
-h1 > svg {
+svg {
   height: 1.4ch;
   margin-left: 0.5rem;
+  color: white;
 }
 
 .search-container {
