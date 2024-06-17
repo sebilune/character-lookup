@@ -5,7 +5,7 @@ import CharacterInfo from './components/CharacterInfo'
 function App() {
   return (
     <div className="App">
-        <CharacterInfo />
+        <CharacterInfo initialSearch="" />
     </div>
   )
 }
