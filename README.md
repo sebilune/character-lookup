@@ -1,30 +1,99 @@
-# React + TypeScript + Vite
+# Anime Character Lookup
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Table of Contents
 
-Currently, two official plugins are available:
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+5. [API Integration](#api-integration)
+7. [Installation](#installation)
+8. [Contributing](#contributing)
+9. [License](#license)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Introduction
 
-## Expanding the ESLint configuration
+This project is an open-source React application designed to provide information about anime characters. It serves as a learning tool for working with APIs and using TypeScript with React (TSX). Users can search for their favorite anime characters and get detailed information, including their names (both in English and native Japanese), descriptions, images, and the anime they are featured in.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- Search for anime characters by name
+- Display character's full name and native name
+- Show character description
+- Display character image
+- Show the anime from which the character comes
+- Responsive and user-friendly interface
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
+## Technologies Used
+
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
+- **GraphQL**: A query language for your API, used here to fetch data from the AniList API.
+- **AniList API**: A GraphQL-based API to retrieve anime and manga information.
+
+
+## API Integration
+
+### Querying the API
+
+The project queries the AniList API to fetch data about anime characters. Here is the GraphQL query used:
+
+```graphql
+query {
+    Character(search: "characterName") {
+        name {
+            full
+            native
+        }
+        description(asHtml: true)
+        image {
+            large
+        }
+        media {
+            nodes {
+                title {
+                    romaji
+                }
+            }
+        }
+    }
 }
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### What the Query Returns
+
+The query returns the following data about the character:
+
+- **name**: An object containing:
+  - `full`: The full name of the character.
+  - `native`: The native (Japanese) name of the character.
+- **description**: A description of the character in HTML format.
+- **image**: An object containing:
+  - `large`: A URL to the large-sized image of the character.
+- **media**: An object containing:
+  - `nodes`: An array of media (anime/manga) objects, each containing:
+    - `title`: An object containing:
+      - `romaji`: The romaji (Latin alphabet) title of the media.
+
+## Usage
+
+1. **Search**: Type the name of the anime character you are looking for in the search bar.
+2. **Submit**: Press the search button or hit Enter.
+3. **View Results**: The application will display the character's name, native name, description, image, and the anime they appear in.
+
+## Installation
+
+To run this project locally, follow these steps:
+
+```sh
+  git clone https://github.com/sebilune/character-lookup.git
+  cd character-lookup
+  npm i
+  npm run dev
+```
+## Contributing
+
+Contributions are welcome! To contribute to this project, please fork the repository and create a pull request with your changes. Ensure that your code adheres to the existing style and conventions and that all tests pass.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
