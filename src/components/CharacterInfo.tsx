@@ -124,7 +124,7 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({
         </svg>
       </h1>
       <div className="search-container">
-        <form action="https://github.com/sebilune">
+        <form action="https://github.com/sebilune/character-lookup">
           <button type="submit">
             <svg
               viewBox="0 -0.5 48 48"
