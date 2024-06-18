@@ -1,5 +1,7 @@
 import { isKana, toRomaji, toKatakana } from "wanakana";
+import Tooltip from "rc-tooltip";
 
+import "rc-tooltip/assets/bootstrap_white.css";
 interface CharacterNameProps {
   characterNativeName: string;
   characterName: string;
@@ -10,7 +12,7 @@ const CharacterName: React.FC<CharacterNameProps> = ({
   characterNativeName,
 }) => {
   const containsKana = isKana(characterNativeName);
-  let titleText: string;
+  let tooltipText: string;
 
   const romajiPronunciation = containsKana
     ? toRomaji(characterNativeName)
@@ -26,13 +28,13 @@ const CharacterName: React.FC<CharacterNameProps> = ({
     characterNativeName = toKatakana(
       characterName.split(" ").reverse().join("")
     );
-    titleText = `Could not find native name for character, using Japanese naming convention and Katakana pronunciation: ${toRomaji(
+    tooltipText = `Could not find native name for character, using Japanese naming convention and Katakana pronunciation: ${toRomaji(
       characterNativeName
     )}`;
   } else if (containsKana) {
-    titleText = `Japanese pronunciation: ${romajiPronunciation}`;
+    tooltipText = `Japanese pronunciation: ${romajiPronunciation}`;
   } else {
-    titleText = "Native name (Japanese)";
+    tooltipText = "Native name (Japanese)";
   }
 
   return (
@@ -40,9 +42,14 @@ const CharacterName: React.FC<CharacterNameProps> = ({
       {characterName}
       <div>
         (
-        <span title={titleText} className="primary-highlight">
-          {characterNativeName}
-        </span>
+        <Tooltip
+          placement="bottom"
+          trigger={["hover", "click"]}
+          overlay={<span className="tooltip">{tooltipText}</span>}
+          motion={{ motionName: "rc-tooltip-zoom", motionLeave: false }}
+        >
+          <span className="primary-highlight">{characterNativeName}</span>
+        </Tooltip>
         )
       </div>
     </>
