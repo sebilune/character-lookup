@@ -1,5 +1,10 @@
 import React, { useState, useCallback } from "react";
 
+import CharacterName from "./CharacterName";
+import SearchInput from "./SearchInput";
+import SearchIcon from "./SearchIcon";
+import Loading from "./Loading";
+
 type Character = {
   name: {
     full: string;
@@ -86,8 +91,8 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({
     }
   }, [searchTerm]);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+  const handleInputChange = (value: string) => {
+    setSearchTerm(value);
   };
 
   const handleSearchClick = () => {
@@ -95,70 +100,53 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({
   };
 
   return (
-    <div>
+    <>
       <h1>
         <a href="https://github.com/sebilune/character-lookup">
           Anime Character Lookup
         </a>
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g stroke-width="0"></g>
-          <g stroke-linecap="round" stroke-linejoin="round"></g>
-          <g>
-            {" "}
-            <path
-              opacity="0.1"
-              d="M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-              fill="currentColor"
-            ></path>{" "}
-            <path
-              d="M15 15L21 21"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></path>{" "}
-            <path
-              d="M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-              stroke="currentColor"
-              stroke-width="2"
-            ></path>{" "}
-          </g>
-        </svg>
+        <SearchIcon />
       </h1>
-      <div className="search-container">
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={handleInputChange}
-          placeholder="Search for a character..."
-          onKeyDown={(e) => {
-            if (e.key === "Enter") fetchCharacter();
-          }}
-        />
-        <button onClick={handleSearchClick}>Search</button>
-      </div>
-      <div>
-        {loading && <div>Loading...</div>}
+      <SearchInput
+        value={searchTerm}
+        onChange={handleInputChange}
+        onSearch={handleSearchClick}
+      />
+      <div className="character-details">
+        {loading && <Loading />}
         {!loading && character && (
           <>
-            <h2>
-              <img src={character.image.large} alt={character.name.full} />
-            </h2>
-            <h2>
-              {character.name.full} ({character.name.native})
-            </h2>
-            {character.media && character.media.nodes.length > 0 && (
-              <p>
-                <strong>From:</strong> {character.media.nodes[0].title.romaji}
-              </p>
-            )}
-            <div
-              dangerouslySetInnerHTML={{ __html: character.description }}
-            ></div>
+            <div className="left-panel">
+              <div className="card">
+                <img src={character.image.large} alt={character.name.full} />
+                <h2>
+                  <CharacterName
+                    characterName={character.name.full}
+                    characterNativeName={character.name.native}
+                  />
+                </h2>
+              </div>
+            </div>
+            <div className="right-panel">
+              {character.media && character.media.nodes.length > 0 && (
+                <h2>
+                  From:{" "}
+                  <a
+                    href={`https://anilist.co/search/anime?search=${character.media.nodes[0].title.romaji}`}
+                  >
+                    {character.media.nodes[0].title.romaji}
+                  </a>
+                </h2>
+              )}
+              <div
+                className="description"
+                dangerouslySetInnerHTML={{ __html: character.description }}
+              ></div>
+            </div>
           </>
         )}
       </div>
-    </div>
+    </>
   );
 };
 
