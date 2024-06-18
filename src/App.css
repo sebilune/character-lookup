@@ -8,15 +8,10 @@
   text-align: center;
 }
 
-img,
 input[type="text"],
 button {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-img {
-  border: 1px solid #646cff;
 }
 
 input[type="text"] {
@@ -40,7 +35,83 @@ svg {
   color: white;
 }
 
+.primary-highlight {
+  color: #646cff;
+}
+
 .search-container {
   display: flex;
   justify-content: center;
+}
+
+.character-details {
+  display: flex;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.left-panel {
+  text-align: center;
+  justify-content: center;
+  padding-right: 6rem;
+}
+
+.right-panel {
+  justify-content: center;
+  border-left: 2px solid #646cff;
+  padding-left: 6rem;
+}
+
+.description {
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+.card {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: inline-block;
+  border: 2px solid #646cff;
+  max-width: 280px;
+  height: 100%;
+}
+
+.card h2 {
+  margin: 1rem;
+}
+
+.loading {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.card img {
+  min-width: 280px;
+  height: 100%;
+  border-bottom: 2px solid #646cff;
+  vertical-align: top;
+}
+
+@media (max-width: 1200px) {
+  .card img {
+    min-width: 100%;
+  }
+
+  .character-details {
+    flex-direction: column;
+  }
+
+  .left-panel {
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .right-panel {
+    padding-left: 0;
+    border-left: none;
+    margin-top: 2rem;
+  }
+
+  .description {
+    font-size: 18px;
+  }
 }
