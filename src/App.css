@@ -91,6 +91,10 @@ svg {
   vertical-align: top;
 }
 
+.tooltip {
+  font-size: 14px;
+}
+
 @media (max-width: 1200px) {
   .card img {
     min-width: 100%;
