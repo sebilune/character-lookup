@@ -101,7 +101,7 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({
 
   return (
     <>
-      <h1>
+      <h1 className="title">
         <a href="https://github.com/sebilune/character-lookup">
           Anime Character Lookup
         </a>
