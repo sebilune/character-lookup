@@ -24,13 +24,14 @@ const SearchInput: React.FC<SearchInputProps> = ({ value, onChange, onSearch }) 
   return (
     <div className="search-container">
       <input
+        className="text-input"
         type="text"
         value={value}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         placeholder="Search for a character..."
       />
-      <button onClick={handleSearchClick}>Search</button>
+      <button className="btn-primary" onClick={handleSearchClick}>Search</button>
     </div>
   );
 };
