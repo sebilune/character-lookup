@@ -4,8 +4,6 @@
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   border: 2px solid transparent;
   padding: 10px;
-  font-size: 1em;
-  font-weight: 500;
   cursor: pointer;
   transition: border-color 0.25s;
   background-color: #646cff;
@@ -18,8 +16,7 @@
 .text-input {
   background-color: #1a1a1a;
   border: 2px solid transparent;
-  font-size: 18px;
-  margin: 0 5px;
+  margin-right: 5px;
   outline: none;
   padding: 10px;
   transition: border-color 0.25s;
