@@ -89,6 +89,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+/* Light mode */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -97,11 +99,10 @@ body {
   a:hover {
     color: #747bff;
   }
-  button {
+  .text-input {
     background-color: #f9f9f9;
-    color: #646cff;
   }
   svg {
-    color: #1a1a1a;
+    color: #808080;
   }
 }
