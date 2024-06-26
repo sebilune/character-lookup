@@ -1,3 +1,5 @@
+import CharacterName from "./CharacterName";
+
 interface CharacterCardProps {
   character: {
     name: {
@@ -9,8 +11,6 @@ interface CharacterCardProps {
     };
   };
 }
-
-import CharacterName from "./CharacterName";
 
 const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
   return (
