@@ -118,7 +118,9 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({
           <>
             <div className="left-panel">
               <div className="card">
-                <img src={character.image.large} alt={character.name.full} />
+                <div className="img-placeholder">
+                  <img src={character.image.large} alt={character.name.full} />
+                </div>
                 <h2>
                   <CharacterName
                     characterName={character.name.full}
