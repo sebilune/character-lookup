@@ -7,7 +7,10 @@ interface CharacterResultProps {
   loading: boolean;
 }
 
-const CharacterResult: React.FC<CharacterResultProps> = ({ character, loading }) => {
+const CharacterResult: React.FC<CharacterResultProps> = ({
+  character,
+  loading,
+}) => {
   return (
     <div className="character">
       {loading && <Loading />}
