@@ -2,31 +2,15 @@ import React, { useState, useCallback } from "react";
 
 import SearchInput from "./components/SearchInput";
 import SearchIcon from "./components/SearchIcon";
-import Character from "./components/Character";
+import CharacterResult from "./components/CharacterResult";
+
+import type { Character } from "./types/Character";
 
 import "./App.css";
 
-type CharacterType = {
-  name: {
-    full: string;
-    native: string; // Added for Japanese name
-  };
-  description: string;
-  image: {
-    large: string;
-  };
-  media?: {
-    nodes: {
-      title: {
-        romaji: string;
-      };
-    }[];
-  };
-};
-
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [character, setCharacter] = useState<CharacterType | null>(null);
+  const [character, setCharacter] = useState<Character | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   const fetchCharacter = useCallback(async () => {
@@ -73,7 +57,7 @@ const App: React.FC = () => {
       const data = await response.json();
 
       if (data.data && data.data.Character) {
-        const characterData: CharacterType = data.data.Character;
+        const characterData: Character = data.data.Character;
         setCharacter(characterData);
       } else {
         setCharacter(null);
@@ -107,7 +91,7 @@ const App: React.FC = () => {
         onChange={handleInputChange}
         onSearch={handleSearchClick}
       />
-      <Character character={character} loading={loading} />
+      <CharacterResult character={character} loading={loading} />
     </>
   );
 };

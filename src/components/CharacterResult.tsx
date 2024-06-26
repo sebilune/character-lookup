@@ -1,31 +1,13 @@
-import React from "react";
 import CharacterCard from "./CharacterCard";
 import Loading from "./Loading";
+import type { Character } from "../types/Character";
 
-type Character = {
-  name: {
-    full: string;
-    native: string;
-  };
-  description: string;
-  image: {
-    large: string;
-  };
-  media?: {
-    nodes: {
-      title: {
-        romaji: string;
-      };
-    }[];
-  };
-};
-
-interface CharacterProps {
+interface CharacterResultProps {
   character: Character | null;
   loading: boolean;
 }
 
-const Character: React.FC<CharacterProps> = ({ character, loading }) => {
+const CharacterResult: React.FC<CharacterResultProps> = ({ character, loading }) => {
   return (
     <div className="character">
       {loading && <Loading />}
@@ -58,4 +40,4 @@ const Character: React.FC<CharacterProps> = ({ character, loading }) => {
   );
 };
 
-export default Character;
+export default CharacterResult;
