@@ -97,7 +97,7 @@ svg {
 /* Image Placeholder */
 .img-placeholder {
   min-width: 280px;
-  min-height: 200px;
+  min-height: 320px;
   display: flex;
   justify-content: center;
   align-items: center;
