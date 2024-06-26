@@ -2,6 +2,7 @@ import { isKana, toRomaji, toKatakana } from "wanakana";
 import Tooltip from "rc-tooltip";
 
 import "rc-tooltip/assets/bootstrap_white.css";
+
 interface CharacterNameProps {
   characterNativeName: string;
   characterName: string;
