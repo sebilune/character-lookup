@@ -1,13 +1,16 @@
+/* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
 
+/* Global Styles */
 #root {
   font-family: "Lexend", sans-serif;
-  margin: 0 auto;
   max-width: 1280px;
+  margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
+/* Form Elements */
 input[type="text"],
 button {
   border-radius: 5px;
@@ -17,8 +20,7 @@ button {
 input[type="text"] {
   border: 1px solid rgba(0, 0, 0, 0.1);
   font-size: 18px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin: 0 5px;
   outline: none;
   padding: 10px;
   transition: border-color 0.3s ease;
@@ -26,19 +28,21 @@ input[type="text"] {
 
 input[type="text"]:focus {
   border-color: #646cff;
-  border: 1px solid #646cff;
 }
 
+/* Icons */
 svg {
   height: 1.4ch;
   margin-left: 0.5rem;
   color: white;
 }
 
+/* Specific Class Styles */
 .primary-highlight {
   color: #646cff;
 }
 
+/* Layout Containers */
 .search-container {
   display: flex;
   justify-content: center;
@@ -52,14 +56,17 @@ svg {
 
 .left-panel {
   text-align: center;
-  justify-content: center;
   padding-right: 6rem;
 }
 
 .right-panel {
-  justify-content: center;
   border-left: 2px solid #646cff;
   padding-left: 6rem;
+}
+
+.right-panel,
+.left-panel {
+  justify-content: center;
 }
 
 .description {
@@ -67,6 +74,7 @@ svg {
   line-height: 1.6;
 }
 
+/* Cards */
 .card {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -80,11 +88,13 @@ svg {
   margin: 1rem;
 }
 
+/* Loading Indicator */
 .loading {
   margin: 0 auto;
   text-align: center;
 }
 
+/* Image Placeholder */
 .img-placeholder {
   min-width: 280px;
   min-height: 200px;
@@ -102,10 +112,12 @@ svg {
   vertical-align: top;
 }
 
+/* Tooltip */
 .tooltip {
   font-size: 14px;
 }
 
+/* Responsive Design */
 @media (max-width: 1200px) {
   .card img {
     min-width: 100%;
@@ -115,13 +127,13 @@ svg {
     flex-direction: column;
   }
 
-  .left-panel {
-    padding-right: 0;
-    margin-right: 0;
+  .left-panel,
+  .right-panel {
+    padding: 0;
+    margin: 0;
   }
 
   .right-panel {
-    padding-left: 0;
     border-left: none;
     margin-top: 2rem;
   }
