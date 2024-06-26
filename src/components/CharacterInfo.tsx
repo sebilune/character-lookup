@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from "react";
 
-import CharacterName from "./CharacterName";
 import SearchInput from "./SearchInput";
 import SearchIcon from "./SearchIcon";
 import Loading from "./Loading";
+import CharacterCard from "./CharacterCard";
 
 type Character = {
   name: {
@@ -117,17 +117,7 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({
         {!loading && character && (
           <>
             <div className="left-panel">
-              <div className="card">
-                <div className="img-placeholder">
-                  <img src={character.image.large} alt={character.name.full} />
-                </div>
-                <h2>
-                  <CharacterName
-                    characterName={character.name.full}
-                    characterNativeName={character.name.native}
-                  />
-                </h2>
-              </div>
+              <CharacterCard character={character} />
             </div>
             <div className="right-panel">
               {character.media && character.media.nodes.length > 0 && (
