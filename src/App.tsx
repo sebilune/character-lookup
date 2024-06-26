@@ -108,7 +108,7 @@ const App: React.FC = () => {
         onChange={handleInputChange}
         onSearch={handleSearchClick}
       />
-      <div className="character-details">
+      <div className="character">
         {loading && <Loading />}
         {!loading && character && (
           <>
@@ -116,20 +116,22 @@ const App: React.FC = () => {
               <CharacterCard character={character} />
             </div>
             <div className="right-panel">
-              {character.media && character.media.nodes.length > 0 && (
-                <h2>
-                  From:{" "}
-                  <a
-                    href={`https://anilist.co/search/anime?search=${character.media.nodes[0].title.romaji}`}
-                  >
-                    {character.media.nodes[0].title.romaji}
-                  </a>
-                </h2>
-              )}
-              <div
-                className="description"
-                dangerouslySetInnerHTML={{ __html: character.description }}
-              ></div>
+              <div className="character-summary">
+                {character.media && character.media.nodes.length > 0 && (
+                  <h2 className="anime-name">
+                    From:{" "}
+                    <a
+                      href={`https://anilist.co/search/anime?search=${character.media.nodes[0].title.romaji}`}
+                    >
+                      {character.media.nodes[0].title.romaji}
+                    </a>
+                  </h2>
+                )}
+                <div
+                  className="character-description"
+                  dangerouslySetInnerHTML={{ __html: character.description }}
+                ></div>
+              </div>
             </div>
           </>
         )}

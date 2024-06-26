@@ -51,7 +51,7 @@ svg {
   justify-content: center;
 }
 
-.character-details {
+.character {
   display: flex;
   align-items: center;
   margin-top: 3rem;
@@ -70,9 +70,25 @@ svg {
   justify-content: center;
 }
 
-.description {
-  margin-top: 1rem;
+.anime-name {
+  border-bottom: 2px solid #646cff;
+  padding: 1rem 0;
+}
+
+.character-summary{
+  border-radius: 6px;
+  border: 2px solid #646cff;
+}
+
+.character-description {
+  padding: 0rem 1rem;
   line-height: 1.6;
+  width: 60ch;
+  max-height: 30rem;
+  overflow-y: auto;
+}
+.character-description > p {
+  margin: 1rem 0;
 }
 
 /* Cards */
@@ -123,7 +139,7 @@ svg {
     min-width: 100%;
   }
 
-  .character-details {
+  .character {
     flex-direction: column;
   }
 
@@ -137,8 +153,9 @@ svg {
     margin-top: 2rem;
   }
 
-  .description {
-    font-size: 18px;
+  .character-description {
+    max-height: 100%;
+    width: 100%;
   }
 }
 
