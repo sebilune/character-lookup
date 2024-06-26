@@ -1,13 +1,141 @@
-import './App.css'
+import React, { useState, useCallback } from "react";
 
-import CharacterInfo from './components/CharacterInfo'
+import SearchInput from "./components/SearchInput";
+import SearchIcon from "./components/SearchIcon";
+import Loading from "./components/Loading";
+import CharacterCard from "./components/CharacterCard";
 
-function App() {
+import "./App.css";
+
+type Character = {
+  name: {
+    full: string;
+    native: string; // Added for Japanese name
+  };
+  description: string;
+  image: {
+    large: string;
+  };
+  media?: {
+    nodes: {
+      title: {
+        romaji: string;
+      };
+    }[];
+  };
+};
+
+const App: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [character, setCharacter] = useState<Character | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const fetchCharacter = useCallback(async () => {
+    if (!searchTerm) {
+      setCharacter(null);
+      return;
+    }
+
+    setLoading(true);
+
+    const characterQuery = `
+        query {
+            Character(search: "${searchTerm}") {
+                name {
+                    full
+                    native
+                }
+                description(asHtml: true)
+                image {
+                    large
+                }
+                media {
+                    nodes {
+                        title {
+                            romaji
+                        }
+                    }
+                }
+            }
+        }`;
+
+    const url = "https://graphql.anilist.co";
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ query: characterQuery }),
+    };
+
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+
+      if (data.data && data.data.Character) {
+        const characterData: Character = data.data.Character;
+        setCharacter(characterData);
+      } else {
+        setCharacter(null);
+      }
+    } catch (error) {
+      console.error("Error fetching character data:", error);
+      setCharacter(null);
+    } finally {
+      setLoading(false);
+    }
+  }, [searchTerm]);
+
+  const handleInputChange = (value: string) => {
+    setSearchTerm(value);
+  };
+
+  const handleSearchClick = () => {
+    fetchCharacter();
+  };
+
   return (
-    <div className="App">
-        <CharacterInfo initialSearch="" />
-    </div>
-  )
-}
+    <>
+      <h1 className="title">
+        <a href="https://github.com/sebilune/character-lookup">
+          Anime Character Lookup
+        </a>
+        <SearchIcon />
+      </h1>
+      <SearchInput
+        value={searchTerm}
+        onChange={handleInputChange}
+        onSearch={handleSearchClick}
+      />
+      <div className="character-details">
+        {loading && <Loading />}
+        {!loading && character && (
+          <>
+            <div className="left-panel">
+              <CharacterCard character={character} />
+            </div>
+            <div className="right-panel">
+              {character.media && character.media.nodes.length > 0 && (
+                <h2>
+                  From:{" "}
+                  <a
+                    href={`https://anilist.co/search/anime?search=${character.media.nodes[0].title.romaji}`}
+                  >
+                    {character.media.nodes[0].title.romaji}
+                  </a>
+                </h2>
+              )}
+              <div
+                className="description"
+                dangerouslySetInnerHTML={{ __html: character.description }}
+              ></div>
+            </div>
+          </>
+        )}
+      </div>
+    </>
+  );
+};
 
-export default App
+export default App;
