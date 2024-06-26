@@ -80,6 +80,14 @@ The query returns the following data about the character:
 2. **Submit**: Press the search button or hit Enter.
 3. **View Results**: The application will display the character's name, native name, description, image, and the anime they appear in.
 
+## Dependencies
+
+This project utilizes the following dependencies:
+
+- **[Vite](https://vitejs.dev/)**: A fast build tool for React projects that provides a rich development experience with instant server startup, fast hot module replacement (HMR), and optimized builds.
+- **[Wanakana](https://wanakana.com/)**: A JavaScript library to help with Japanese kana and romaji input.
+- **[rc-tooltip](https://github.com/react-component/tooltip)**: A React component for creating customizable tooltips.
+
 ## Installation
 
 To run this project locally, follow these steps:
