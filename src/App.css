@@ -66,6 +66,7 @@ svg {
   margin-top: 1rem;
   line-height: 1.6;
 }
+
 .card {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -84,10 +85,20 @@ svg {
   text-align: center;
 }
 
-.card img {
+.img-placeholder {
   min-width: 280px;
-  height: 100%;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #808080;
   border-bottom: 2px solid #646cff;
+}
+
+.img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   vertical-align: top;
 }
 
