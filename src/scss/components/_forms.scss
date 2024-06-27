@@ -9,9 +9,10 @@
   transition: border-color 0.25s;
   border-radius: 6px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-.text-input:focus {
-  border-color: $primary-color-hover;
+
+  &:focus {
+    border-color: $primary-color-hover;
+  }
 }
 
 /* Light mode */

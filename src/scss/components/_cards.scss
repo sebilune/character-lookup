@@ -6,25 +6,24 @@
   overflow: hidden;
   display: inline-block;
   border: 2px solid $primary-color;
-  max-width: 280px;
-  height: 100%;
-}
-.card h2 {
-  margin: 1rem;
+  max-width: 15rem;
+
+  h2 {
+    margin: 1rem;
+  }
 }
 
 .img-placeholder {
-  min-width: 280px;
-  min-height: 320px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: $secondary-color;
   border-bottom: 2px solid $primary-color;
-}
-.img-placeholder img {
-  min-width: 280px;
-  min-height: 320px;
-  object-fit: cover;
-  vertical-align: top;
+
+  img {
+    min-width: 15rem;
+    height: auto;
+    object-fit: cover;
+    vertical-align: top;
+  }
 }

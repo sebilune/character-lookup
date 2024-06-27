@@ -8,7 +8,8 @@
   transition: background-color 0.25s;
   background-color: $primary-color;
   color: white;
-}
-.btn-primary:hover {
-  background-color: $primary-color-hover;
+
+  &:hover {
+    background-color: $primary-color-hover;
+  }
 }

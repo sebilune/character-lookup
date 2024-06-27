@@ -51,9 +51,10 @@
   width: auto;
   max-height: 30rem;
   overflow-y: auto;
-}
-.character-description > p {
-  margin: 1rem 0;
+
+  & > p {
+    margin: 1rem 0;
+  }
 }
 
 /* Responsive Design */
