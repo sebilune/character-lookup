@@ -1,5 +1,14 @@
 // Global
-@use "global/reset";
+@import "themes/variables";
+@import "base/reset";
 
 // Components
-@use "components/app";
+@import "components/buttons";
+@import "components/forms";
+@import "components/icons";
+@import "components/cards";
+@import "components/loading";
+@import "components/tooltip";
+
+// Layout
+@import "layout/layout";

@@ -1,4 +1,3 @@
-/* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
 
 /* Reset */
@@ -55,14 +54,12 @@ button:focus {
 
 /* Globals */
 :root {
-  font-family: "Lexend", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: $font-family;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: $text-color-light;
+  background-color: $background-color-dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -76,11 +73,11 @@ button:focus {
 }
 a {
   font-weight: 500;
-  color: #646cff;
+  color: $primary-color;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: $primary-color-hover;
 }
 body {
   margin: 0;
@@ -93,8 +90,8 @@ body {
 /* Light mode */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: $text-color-dark;
+    background-color: $background-color-light;
   }
   a:hover {
     color: #747bff;
@@ -103,6 +100,6 @@ body {
     background-color: #f9f9f9;
   }
   svg {
-    color: #808080;
+    color: $secondary-color;
   }
 }

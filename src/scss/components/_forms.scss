@@ -1,0 +1,22 @@
+@import "../themes/variables";
+
+.text-input {
+  background-color: #242424;
+  border: 2px solid $primary-color;
+  margin-right: 5px;
+  outline: none;
+  padding: 10px;
+  transition: border-color 0.25s;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.text-input:focus {
+  border-color: $primary-color-hover;
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  .text-input {
+    background-color: #f9f9f9;
+  }
+}

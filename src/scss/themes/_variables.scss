@@ -1,0 +1,27 @@
+// Colors
+$primary-color: #646cff;
+$primary-color-hover: #535bf2;
+$secondary-color: #808080;
+$background-color-dark: #1a1a1a;
+$background-color-light: #ffffff;
+$text-color-light: rgba(255, 255, 255, 0.87);
+$text-color-dark: #213547;
+
+// Font
+$font-family: "Lexend", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+// Light mode
+@media (prefers-color-scheme: light) {
+  :root {
+    background-color: $background-color-light;
+    color: $text-color-dark;
+  }
+}
+
+// Dark mode
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: $background-color-dark;
+    color: $text-color-light;
+  }
+}

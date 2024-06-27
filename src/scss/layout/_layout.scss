@@ -1,0 +1,92 @@
+@import "../themes/variables";
+
+.primary {
+  color: $primary-color;
+}
+
+.title {
+  font-size: 3.2em;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+}
+
+.character {
+  display: flex;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.left-panel {
+  text-align: center;
+  padding-right: 6rem;
+}
+.right-panel {
+  border-left: 2px solid $primary-color;
+  padding-left: 6rem;
+}
+.right-panel,
+.left-panel {
+  justify-content: center;
+}
+
+.anime-name {
+  border-bottom: 2px solid $primary-color;
+  padding: 1rem;
+}
+
+.character-summary {
+  border-radius: 6px;
+  border: 2px solid $primary-color;
+}
+
+.character-description {
+  padding: 0rem 1rem;
+  line-height: 1.6;
+  width: auto;
+  max-height: 30rem;
+  overflow-y: auto;
+}
+.character-description > p {
+  margin: 1rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .card img {
+    min-width: 100%;
+  }
+
+  .character {
+    flex-direction: column;
+  }
+
+  .left-panel,
+  .right-panel {
+    padding: 0;
+    margin: 0;
+  }
+  .right-panel {
+    border-left: none;
+    margin-top: 2rem;
+  }
+
+  .character-description {
+    max-height: 100%;
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container {
+    flex-direction: column;
+  }
+  .text-input {
+    margin: 1rem 0;
+  }
+}

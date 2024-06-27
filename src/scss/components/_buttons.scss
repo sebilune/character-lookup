@@ -1,0 +1,14 @@
+@import "../themes/variables";
+
+.btn-primary {
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.25s;
+  background-color: $primary-color;
+  color: white;
+}
+.btn-primary:hover {
+  background-color: $primary-color-hover;
+}

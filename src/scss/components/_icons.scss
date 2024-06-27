@@ -1,0 +1,12 @@
+svg {
+  height: 1.4ch;
+  margin-left: 0.5rem;
+  color: white;
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  svg {
+    color: $secondary-color;
+  }
+}
