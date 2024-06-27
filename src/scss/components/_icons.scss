@@ -1,12 +1,54 @@
+@import "../themes/variables";
+
 .search-icon {
   height: 1.4ch;
   margin-left: 0.5rem;
   color: white;
 }
 
+a#github {
+  z-index: 1000;
+}
+
+svg#github {
+  fill: $primary-color;
+  color: white;
+  position: absolute;
+  top: 0;
+  border: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+svg#github:hover .octo-arm {
+  animation: wave 560ms ease-in-out;
+}
+
+.octo-arm {
+  transform-origin: 130px 106px;
+}
+
 /* Light mode */
 @media (prefers-color-scheme: light) {
   .search-icon {
     color: $secondary-color;
+  }
+}
+
+/* Github wave animation */
+@keyframes wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+
+  40%,
+  80% {
+    transform: rotate(10deg);
   }
 }

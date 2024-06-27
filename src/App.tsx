@@ -2,11 +2,12 @@ import React, { useState, useCallback } from "react";
 
 import SearchInput from "./components/SearchInput";
 import CharacterResult from "./components/CharacterResult";
+import Title from "./components/Title";
 
 import type Character from "./types/Character";
 
 import characters from "./utils/characters";
-import Title from "./components/Title";
+import GitHubIcon from "./components/GithubIcon";
 
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -85,6 +86,7 @@ const App: React.FC = () => {
 
   return (
     <>
+      <GitHubIcon />
       <Title />
       <SearchInput
         value={searchTerm}
