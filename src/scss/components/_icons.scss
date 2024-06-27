@@ -6,7 +6,7 @@
 
 /* Light mode */
 @media (prefers-color-scheme: light) {
-  svg {
+  .search-icon {
     color: $secondary-color;
   }
 }
