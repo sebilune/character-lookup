@@ -1,5 +1,11 @@
+import CatAnimation from "./CatAnimation";
+
 const Loading: React.FC = () => {
-  return <div className="loading">Loading...</div>;
+  return (
+    <div className="loading">
+      <CatAnimation />
+    </div>
+  );
 };
 
 export default Loading;
