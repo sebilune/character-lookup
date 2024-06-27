@@ -1,4 +1,4 @@
-export type Character = {
+type Character = {
   name: {
     full: string;
     native: string;
@@ -15,3 +15,5 @@ export type Character = {
     }[];
   };
 };
+
+export default Character;

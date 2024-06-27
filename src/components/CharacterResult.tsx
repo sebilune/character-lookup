@@ -1,6 +1,7 @@
 import CharacterCard from "./CharacterCard";
 import Loading from "./Loading";
-import type { Character } from "../types/Character";
+
+import type Character from "../types/Character";
 
 interface CharacterResultProps {
   character: Character | null;
