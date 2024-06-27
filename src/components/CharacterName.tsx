@@ -50,7 +50,7 @@ const CharacterName: React.FC<CharacterNameProps> = ({
           overlay={<span className="tooltip">{tooltipText}</span>}
           motion={{ motionName: "rc-tooltip-zoom", motionLeave: false }}
         >
-          <span className="primary-highlight">{characterNativeName}</span>
+          <span className="primary">{characterNativeName}</span>
         </Tooltip>
         )
       </div>
