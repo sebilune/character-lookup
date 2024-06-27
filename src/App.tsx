@@ -6,6 +6,8 @@ import CharacterResult from "./components/CharacterResult";
 
 import type { Character } from "./types/Character";
 
+import SadAnimeGirl from "./assets/sad-anime-girl.gif"
+
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [character, setCharacter] = useState<Character | null>(null);
@@ -58,7 +60,14 @@ const App: React.FC = () => {
         const characterData: Character = data.data.Character;
         setCharacter(characterData);
       } else {
-        setCharacter(null);
+        setCharacter({
+          name: { full: "Character not found", native: "404" },
+          description: "Your character could not be found. Please try again.",
+          image: { large: SadAnimeGirl },
+          media: { nodes: [
+            { title: { romaji: "System" } }
+          ] },
+        });
       }
     } catch (error) {
       console.error("Error fetching character data:", error);
