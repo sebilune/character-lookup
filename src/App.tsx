@@ -6,8 +6,6 @@ import CharacterResult from "./components/CharacterResult";
 
 import type { Character } from "./types/Character";
 
-import "./App.css";
-
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [character, setCharacter] = useState<Character | null>(null);
