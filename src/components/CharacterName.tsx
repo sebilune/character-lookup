@@ -35,6 +35,8 @@ const CharacterName: React.FC<CharacterNameProps> = ({
     )}`;
   } else if (containsKana) {
     tooltipText = `Japanese pronunciation: ${romajiPronunciation}`;
+  } else if (characterNativeName === "404") {
+    tooltipText = ":(";
   } else {
     tooltipText = "Native name (Japanese)";
   }
