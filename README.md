@@ -87,6 +87,7 @@ This project utilizes the following dependencies:
 - **[Vite](https://vitejs.dev/)**: A fast build tool for React projects that provides a rich development experience with instant server startup, fast hot module replacement (HMR), and optimized builds.
 - **[Wanakana](https://wanakana.com/)**: A JavaScript library to help with Japanese kana and romaji input.
 - **[rc-tooltip](https://github.com/react-component/tooltip)**: A React component for creating customizable tooltips.
+- **[lottie-react](https://github.com/Gamote/lottie-react)**: A library to render Lottie animations natively on React components, used for processing Lottie JSON animations throughout the project.
 
 ## Installation
 
