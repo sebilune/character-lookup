@@ -1,12 +1,12 @@
 import React, { useState, useCallback } from "react";
 
 import SearchInput from "./components/SearchInput";
-import SearchIcon from "./components/SearchIcon";
 import CharacterResult from "./components/CharacterResult";
 
 import type Character from "./types/Character";
 
 import characters from "./utils/characters";
+import Title from "./components/Title";
 
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -85,12 +85,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <h1 className="title">
-        <a href="https://github.com/sebilune/character-lookup">
-          Anime Character Lookup
-        </a>
-        <SearchIcon />
-      </h1>
+      <Title />
       <SearchInput
         value={searchTerm}
         onChange={handleInputChange}
