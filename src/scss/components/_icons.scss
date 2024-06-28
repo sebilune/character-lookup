@@ -12,7 +12,7 @@ a#github {
 
 svg#github {
   fill: $primary-color;
-  color: white;
+  color: $background-color-dark;
   position: absolute;
   top: 0;
   border: 0;
@@ -50,5 +50,11 @@ svg#github:hover .octo-arm {
   40%,
   80% {
     transform: rotate(10deg);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  svg#github {
+    color: $background-color-light;
   }
 }
