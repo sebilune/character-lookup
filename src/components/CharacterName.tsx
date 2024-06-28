@@ -10,9 +10,8 @@ interface CharacterNameProps {
 
 const CharacterName: React.FC<CharacterNameProps> = ({
   characterName,
-  characterNativeName: rawCharacterNativeName,
+  characterNativeName,
 }) => {
-  const characterNativeName = rawCharacterNativeName.trim();
   const containsKana = isKana(characterNativeName);
 
   const romajiPronunciation = containsKana
@@ -27,12 +26,13 @@ const CharacterName: React.FC<CharacterNameProps> = ({
       "Surname Name" (Japanese naming convention), and convert
       it to Katakana (Japanese naming default for foreign names)
     */
-    const reversedName = toKatakana(
-      characterName.split(" ").reverse().join("")
-    );
-    tooltipText = `Could not find native name for character, using Japanese naming convention and Katakana pronunciation: ${toRomaji(
-      reversedName
-    )}`;
+    const reversedName = characterName
+      .toLowerCase()
+      .split(" ")
+      .reverse()
+      .join("");
+    tooltipText = `Could not find native name for character, using Japanese naming convention and Katakana pronunciation: ${reversedName}`;
+    characterNativeName = toKatakana(reversedName);
   } else if (containsKana) {
     tooltipText = `Japanese pronunciation: ${romajiPronunciation}`;
   } else if (characterNativeName === "404") {

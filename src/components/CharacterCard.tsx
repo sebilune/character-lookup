@@ -1,18 +1,13 @@
+import Character from "../types/Character";
 import CharacterName from "./CharacterName";
 
 interface CharacterCardProps {
-  character: {
-    name: {
-      full: string;
-      native: string;
-    };
-    image: {
-      large: string;
-    };
-  };
+  character: Character;
 }
 
 const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
+  if (character.name.native === null) character.name.native = "";
+
   return (
     <div className="card">
       <div className="img-placeholder">
@@ -20,8 +15,8 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
       </div>
       <h2>
         <CharacterName
-          characterName={character.name.full}
-          characterNativeName={character.name.native}
+          characterName={character.name.full.trim()}
+          characterNativeName={character.name.native.trim()}
         />
       </h2>
     </div>
