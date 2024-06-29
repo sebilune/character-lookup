@@ -1,13 +1,14 @@
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 import SearchInput from "./components/SearchInput";
 import CharacterResult from "./components/CharacterResult";
 import Title from "./components/Title";
+import GitHubIcon from "./components/GithubIcon";
 
 import type Character from "./types/Character";
 
 import characters from "./utils/characters";
-import GitHubIcon from "./components/GithubIcon";
+import getCharacterData from "./utils/getCharacterData";
 
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -27,43 +28,10 @@ const App: React.FC = () => {
 
     setLoading(true);
 
-    const characterQuery = `
-        query {
-            Character(search: "${searchTerm}") {
-                name {
-                    full
-                    native
-                }
-                description(asHtml: true)
-                image {
-                    large
-                }
-                media {
-                    nodes {
-                        title {
-                            romaji
-                        }
-                    }
-                }
-            }
-        }`;
-
-    const url = "https://graphql.anilist.co";
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({ query: characterQuery }),
-    };
-
     try {
-      const response = await fetch(url, options);
-      const data = await response.json();
+      const characterData = await getCharacterData(searchTerm);
 
-      if (data.data && data.data.Character) {
-        const characterData: Character = data.data.Character;
+      if (characterData) {
         setCharacter(characterData);
       } else {
         setCharacter(characters.notFound);
