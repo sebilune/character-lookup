@@ -57,7 +57,7 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
           <div className="right-panel">
             <div className="character-summary">
               {character.media && character.media.nodes.length > 0 && (
-                <h2 className="anime-name">
+                <h2 className="summary-title bottom-border">
                   <p>From:&nbsp;</p>
                   <a
                     href={`https://anilist.co/search/anime?search=${character.media.nodes[0].title.romaji}`}
@@ -71,7 +71,11 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
                 dangerouslySetInnerHTML={{ __html: character.description }}
               ></div>
               <div className="top-opening">
-                <h2 className="anime-name">
+                <h2
+                  className={
+                    viewVideo ? "bottom-border summary-title" : "summary-title"
+                  }
+                >
                   <p>Most streamed opening:&nbsp;</p>
                   {topOpening ? (
                     <>
