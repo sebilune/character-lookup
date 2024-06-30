@@ -84,9 +84,9 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
                       </a>
                       <button onClick={handleViewVideo} className="btn-eye">
                         {viewVideo ? (
-                          <FaEyeSlash className="eye-icon" />
-                        ) : (
                           <FaEye className="eye-icon" />
+                        ) : (
+                          <FaEyeSlash className="eye-icon" />
                         )}
                       </button>
                     </>
