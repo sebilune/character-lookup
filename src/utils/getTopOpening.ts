@@ -9,7 +9,7 @@ const axiosInstance: AxiosInstance = axios.create({
 const getTopOpening = async (
   animeName: string
 ): Promise<YouTubeVideo | null> => {
-  const searchQuery = `${animeName} anime opening`;
+  const searchQuery = `${animeName} intro song`;
 
   try {
     const response = await axiosInstance.post("/search", {

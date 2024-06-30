@@ -14,11 +14,7 @@ type Character = {
       };
     }[];
   };
-  video?: {
-    url: string;
-    views: number;
-    title: string;
-  }
+  video?: false;
 };
 
 export default Character;

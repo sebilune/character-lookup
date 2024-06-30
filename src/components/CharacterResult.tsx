@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ReactPlayer from "react-player";
 
 import CharacterCard from "./CharacterCard";
 import Loading from "./Loading";
@@ -7,7 +8,7 @@ import type Character from "../types/Character";
 import YouTubeVideo from "../types/YouTubeVideo";
 
 import getTopOpening from "../utils/getTopOpening";
-import ReactPlayer from "react-player";
+import formatNumber from "../utils/formatNumber";
 
 interface CharacterResultProps {
   character: Character | null;
@@ -22,6 +23,11 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
 
   useEffect(() => {
     const fetchTopOpening = async () => {
+      if (character?.video === false) {
+        setTopOpening(null);
+        return;
+      }
+
       if (character && character.media.nodes.length > 0) {
         const animeName = character.media.nodes[0].title.romaji;
         const openingData = await getTopOpening(animeName);
@@ -33,10 +39,6 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
 
     fetchTopOpening();
   }, [character]);
-
-  if (character?.video !== undefined) {
-    setTopOpening(character.video);
-  }
 
   return (
     <div className="character">
@@ -62,9 +64,16 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
                 className="character-description"
                 dangerouslySetInnerHTML={{ __html: character.description }}
               ></div>
-              <div className="anime-opening">
-                <ReactPlayer url={topOpening?.url} controls width="100%" />
-              </div>
+              {topOpening && (
+                <div className="top-opening">
+                  <h2 className="anime-name">
+                    Most streamed opening: <a href={topOpening.url}>{formatNumber(topOpening.views)}</a>
+                  </h2>
+                  <div className="player-wrapper">
+                    <ReactPlayer url={topOpening.url} controls width="100%" />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </>
