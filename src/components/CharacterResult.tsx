@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import ReactPlayer from "react-player";
 
@@ -22,10 +22,7 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
 }) => {
   const [topOpening, setTopOpening] = useState<YouTubeVideo | null>(null);
   const [viewVideo, setViewVideo] = useState<boolean>(false);
-
-  function handleViewVideo() {
-    setViewVideo(!viewVideo);
-  }
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const fetchTopOpening = async () => {
@@ -45,6 +42,14 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
 
     fetchTopOpening();
   }, [character]);
+
+  function handleViewVideo() {
+    setViewVideo(!viewVideo);
+    if (buttonRef.current) {
+      buttonRef.current.focus();
+      buttonRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
 
   return (
     <div className="character">
@@ -79,18 +84,20 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
                   <p>Most streamed opening:&nbsp;</p>
                   {topOpening ? (
                     <>
-                      <a onClick={handleViewVideo} href="#player-focus">
+                      <button onClick={handleViewVideo} className="primary">
                         {formatNumber(topOpening.views)}
-                      </a>
-                      <a id="player-focus" href="#player-focus">
-                        <button onClick={handleViewVideo} className="btn-eye">
-                          {viewVideo ? (
-                            <FaEye className="eye-icon" />
-                          ) : (
-                            <FaEyeSlash className="eye-icon" />
-                          )}
-                        </button>
-                      </a>
+                      </button>
+                      <button
+                        onClick={handleViewVideo}
+                        className="btn-eye"
+                        ref={buttonRef}
+                      >
+                        {viewVideo ? (
+                          <FaEye className="eye-icon" />
+                        ) : (
+                          <FaEyeSlash className="eye-icon" />
+                        )}
+                      </button>
                     </>
                   ) : (
                     <a href="">Fetching...</a>
