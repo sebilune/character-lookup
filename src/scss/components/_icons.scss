@@ -1,9 +1,14 @@
 @import "../themes/variables";
 
 .search-icon {
-  height: 1.4ch;
+  height: 100%;
   margin-left: 0.5rem;
   color: white;
+}
+.eye-icon {
+  height: 100%;
+  color: $primary-color;
+  margin-left: 0.5rem;
 }
 
 a#github {
