@@ -6,10 +6,11 @@ const axiosInstance: AxiosInstance = axios.create({
   baseURL: "https://youtube-scraper-api.vercel.app/api/",
 });
 
-const getTopOpening = async (
+const getVideoData = async (
+  characterName: string,
   animeName: string
 ): Promise<YouTubeVideo | null> => {
-  const searchQuery = `${animeName} intro song`;
+  const searchQuery = `${characterName} ${animeName}`;
 
   try {
     const response = await axiosInstance.post("/search", {
@@ -37,4 +38,4 @@ const getTopOpening = async (
   }
 };
 
-export default getTopOpening;
+export default getVideoData;

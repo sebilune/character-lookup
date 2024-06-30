@@ -8,7 +8,7 @@ import Loading from "./Loading";
 import type Character from "../types/Character";
 import YouTubeVideo from "../types/YouTubeVideo";
 
-import getTopOpening from "../utils/getTopOpening";
+import getVideoData from "../utils/getVideoData";
 import formatNumber from "../utils/formatNumber";
 
 interface CharacterResultProps {
@@ -33,7 +33,7 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
 
       if (character && character.media.nodes.length > 0) {
         const animeName = character.media.nodes[0].title.romaji;
-        const openingData = await getTopOpening(animeName);
+        const openingData = await getVideoData(character.name.full, animeName);
         setTopOpening(openingData);
       } else {
         setTopOpening(null);
@@ -81,7 +81,7 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
                     viewVideo ? "bottom-border summary-title" : "summary-title"
                   }
                 >
-                  <p>Most streamed opening:&nbsp;</p>
+                  <p>Trending clip featuring character:&nbsp;</p>
                   {topOpening ? (
                     <>
                       <button onClick={handleViewVideo} className="primary">
