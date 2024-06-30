@@ -1,7 +1,13 @@
+import { useEffect, useState } from "react";
+
 import CharacterCard from "./CharacterCard";
 import Loading from "./Loading";
 
 import type Character from "../types/Character";
+import YouTubeVideo from "../types/YouTubeVideo";
+
+import getTopOpening from "../utils/getTopOpening";
+import ReactPlayer from "react-player";
 
 interface CharacterResultProps {
   character: Character | null;
@@ -12,6 +18,26 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
   character,
   loading,
 }) => {
+  const [topOpening, setTopOpening] = useState<YouTubeVideo | null>(null);
+
+  useEffect(() => {
+    const fetchTopOpening = async () => {
+      if (character && character.media.nodes.length > 0) {
+        const animeName = character.media.nodes[0].title.romaji;
+        const openingData = await getTopOpening(animeName);
+        setTopOpening(openingData);
+      } else {
+        setTopOpening(null);
+      }
+    };
+
+    fetchTopOpening();
+  }, [character]);
+
+  if (character?.video !== undefined) {
+    setTopOpening(character.video);
+  }
+
   return (
     <div className="character">
       {loading && <Loading />}
@@ -36,6 +62,9 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
                 className="character-description"
                 dangerouslySetInnerHTML={{ __html: character.description }}
               ></div>
+              <div className="anime-opening">
+                <ReactPlayer url={topOpening?.url} controls width="100%" />
+              </div>
             </div>
           </div>
         </>

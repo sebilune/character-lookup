@@ -14,6 +14,11 @@ type Character = {
       };
     }[];
   };
+  video?: {
+    url: string;
+    views: number;
+    title: string;
+  }
 };
 
 export default Character;

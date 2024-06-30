@@ -30,12 +30,7 @@ const App: React.FC = () => {
 
     try {
       const characterData = await getCharacterData(searchTerm);
-
-      if (characterData) {
-        setCharacter(characterData);
-      } else {
-        setCharacter(characters.notFound);
-      }
+      setCharacter(characterData || characters.notFound);
     } catch (error) {
       console.error("Error fetching character data:", error);
       setCharacter(null);
