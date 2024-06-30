@@ -36,6 +36,9 @@
 }
 
 .anime-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-bottom: 2px solid $primary-color;
   padding: 1rem;
 }
@@ -55,6 +58,19 @@
   & > p {
     margin: 1rem 0;
   }
+}
+
+.top-opening {
+  border-top: 2px solid $primary-color;
+
+  a:hover {
+    cursor: pointer;
+  }
+}
+
+.player-wrapper div {
+  width: 100%;
+  height: 100%;
 }
 
 /* Responsive Design */
@@ -82,18 +98,6 @@
     width: auto;
   }
 }
-
-.top-opening {
-  border-top: 2px solid $primary-color;
-}
-
-.player-wrapper div {
-  width: 100%;
-  height: 100%;
-}
-
-
-
 @media (max-width: 480px) {
   .search-container {
     flex-direction: column;
