@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import ReactPlayer from "react-player";
 
 import CharacterCard from "./CharacterCard";
@@ -20,6 +21,11 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
   loading,
 }) => {
   const [topOpening, setTopOpening] = useState<YouTubeVideo | null>(null);
+  const [viewVideo, setViewVideo] = useState<boolean>(false);
+
+  function handleViewVideo() {
+    setViewVideo(!viewVideo);
+  }
 
   useEffect(() => {
     const fetchTopOpening = async () => {
@@ -52,7 +58,7 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
             <div className="character-summary">
               {character.media && character.media.nodes.length > 0 && (
                 <h2 className="anime-name">
-                  From:{" "}
+                  <p>From:&nbsp;</p>
                   <a
                     href={`https://anilist.co/search/anime?search=${character.media.nodes[0].title.romaji}`}
                   >
@@ -64,16 +70,32 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
                 className="character-description"
                 dangerouslySetInnerHTML={{ __html: character.description }}
               ></div>
-              {topOpening && (
-                <div className="top-opening">
-                  <h2 className="anime-name">
-                    Most streamed opening: <a href={topOpening.url}>{formatNumber(topOpening.views)}</a>
-                  </h2>
+              <div className="top-opening">
+                <h2 className="anime-name">
+                  <p>Most streamed opening:&nbsp;</p>
+                  {topOpening ? (
+                    <>
+                      <a onClick={handleViewVideo}>
+                        {formatNumber(topOpening.views)}
+                      </a>
+                      <button onClick={handleViewVideo} className="btn-eye">
+                        {viewVideo ? (
+                          <FaEyeSlash className="eye-icon" />
+                        ) : (
+                          <FaEye className="eye-icon" />
+                        )}
+                      </button>
+                    </>
+                  ) : (
+                    <a href="">Fetching...</a>
+                  )}
+                </h2>
+                {topOpening && viewVideo && (
                   <div className="player-wrapper">
                     <ReactPlayer url={topOpening.url} controls width="100%" />
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </>
