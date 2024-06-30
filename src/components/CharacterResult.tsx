@@ -79,16 +79,18 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
                   <p>Most streamed opening:&nbsp;</p>
                   {topOpening ? (
                     <>
-                      <a onClick={handleViewVideo}>
+                      <a onClick={handleViewVideo} href="#player-focus">
                         {formatNumber(topOpening.views)}
                       </a>
-                      <button onClick={handleViewVideo} className="btn-eye">
-                        {viewVideo ? (
-                          <FaEye className="eye-icon" />
-                        ) : (
-                          <FaEyeSlash className="eye-icon" />
-                        )}
-                      </button>
+                      <a id="player-focus" href="#player-focus">
+                        <button onClick={handleViewVideo} className="btn-eye">
+                          {viewVideo ? (
+                            <FaEye className="eye-icon" />
+                          ) : (
+                            <FaEyeSlash className="eye-icon" />
+                          )}
+                        </button>
+                      </a>
                     </>
                   ) : (
                     <a href="">Fetching...</a>
