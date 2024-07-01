@@ -1,5 +1,6 @@
 @import "../themes/variables";
 
+/* react-icons */
 .search-icon {
   height: 100%;
   margin-left: 0.5rem;
@@ -11,10 +12,10 @@
   margin-left: 0.5rem;
 }
 
+/* GitHub icon */
 a#github {
   z-index: 1000;
 }
-
 svg#github {
   fill: $primary-color;
   color: $background-color-dark;
@@ -24,20 +25,11 @@ svg#github {
   right: 0;
   z-index: 1000;
 }
-
 svg#github:hover .octo-arm {
   animation: wave 560ms ease-in-out;
 }
-
 .octo-arm {
   transform-origin: 130px 106px;
-}
-
-/* Light mode */
-@media (prefers-color-scheme: light) {
-  .search-icon {
-    color: $secondary-color;
-  }
 }
 
 /* Github wave animation */
@@ -58,7 +50,12 @@ svg#github:hover .octo-arm {
   }
 }
 
+/* Light mode */
 @media (prefers-color-scheme: light) {
+  .search-icon {
+    color: $secondary-color;
+  }
+
   svg#github {
     color: $background-color-light;
   }
