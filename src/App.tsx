@@ -1,4 +1,4 @@
-/* Dependencies */
+/* Components */
 import Search from "./components/Search";
 import Title from "./components/Title";
 import GitHubIcon from "./components/GithubIcon";
