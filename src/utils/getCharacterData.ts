@@ -31,15 +31,9 @@ const getCharacterData = async (
     }`;
 
   const url = "https://graphql.anilist.co";
-  const options = {
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  };
 
   try {
-    const response = await axios.post(url, { query: characterQuery }, options);
+    const response = await axios.post(url, { query: characterQuery });
     const data = response.data;
 
     if (data.data && data.data.Character) {
