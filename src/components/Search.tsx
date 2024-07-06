@@ -1,7 +1,10 @@
 import { useCallback, useState } from "react";
+
 import characters from "../utils/characters";
 import getCharacterData from "../utils/getCharacterData";
+
 import Character from "../types/Character";
+
 import CharacterResult from "./CharacterResult";
 
 const SearchInput: React.FC = () => {
