@@ -9,34 +9,28 @@ const SearchInput: React.FC<SearchInputProps> = ({
   onChange,
   onSearch,
 }) => {
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(event.target.value);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(e.target.value);
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      onSearch();
-    }
-  };
-
-  const handleSearchClick = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     onSearch();
   };
 
   return (
-    <div className="search-container">
+    <form onSubmit={handleSubmit}>
       <input
         className="text-input"
         type="text"
         value={value}
         onChange={handleInputChange}
-        onKeyDown={handleKeyDown}
         placeholder="Search for a character..."
       />
-      <button className="btn-primary" onClick={handleSearchClick}>
+      <button className="btn-primary" type="submit">
         Search
       </button>
-    </div>
+    </form>
   );
 };
 
