@@ -26,7 +26,7 @@ const CharacterResult: React.FC<CharacterResultProps> = ({
 
   useEffect(() => {
     const fetchTopOpening = async () => {
-      if (character?.video !== undefined) {
+      if (character?.video) {
         setTopOpening(character.video);
         return;
       }
