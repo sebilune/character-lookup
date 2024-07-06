@@ -1,5 +1,7 @@
+/* Dependencies */
 import axios, { AxiosInstance } from "axios";
 
+/* Types */
 import type YouTubeVideo from "../types/YouTubeVideo";
 
 const axiosInstance: AxiosInstance = axios.create({

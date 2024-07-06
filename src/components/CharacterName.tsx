@@ -1,6 +1,8 @@
+/* Dependencies */
 import { isKana, toRomaji, toKatakana } from "wanakana";
 import Tooltip from "rc-tooltip";
 
+/* Styles */
 import "rc-tooltip/assets/bootstrap_white.css";
 
 interface CharacterNameProps {

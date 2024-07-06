@@ -1,3 +1,4 @@
+/* Components */
 import CatAnimation from "./CatAnimation";
 
 const Loading: React.FC = () => {

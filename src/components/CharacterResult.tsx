@@ -1,13 +1,17 @@
+/* Dependencies */
 import { useEffect, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import ReactPlayer from "react-player";
 
+/* Components */
 import CharacterCard from "./CharacterCard";
 import Loading from "./Loading";
 
+/* Types */
 import type Character from "../types/Character";
 import YouTubeVideo from "../types/YouTubeVideo";
 
+/* Utils */
 import getVideoData from "../utils/getVideoData";
 import formatNumber from "../utils/formatNumber";
 

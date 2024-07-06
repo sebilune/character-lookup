@@ -1,11 +1,15 @@
+/* Dependencies */
 import { useCallback, useState } from "react";
 
-import characters from "../utils/characters";
-import getCharacterData from "../utils/getCharacterData";
+/* Components */
+import CharacterResult from "./CharacterResult";
 
+/* Types */
 import Character from "../types/Character";
 
-import CharacterResult from "./CharacterResult";
+/* Utils */
+import characters from "../utils/characters";
+import getCharacterData from "../utils/getCharacterData";
 
 const SearchInput: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");

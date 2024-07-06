@@ -1,3 +1,4 @@
+/* Dependencies */
 import { MdOutlineManageSearch } from "react-icons/md";
 
 const Title: React.FC = () => (

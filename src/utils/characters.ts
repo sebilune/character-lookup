@@ -1,5 +1,7 @@
+/* Types */
 import type Character from "../types/Character";
 
+/* Assets */
 import sadAnimeGirl from "../assets/sad-anime-girl.gif";
 
 const notFound: Character = {

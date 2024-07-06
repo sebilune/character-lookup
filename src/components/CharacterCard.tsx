@@ -1,5 +1,8 @@
-import Character from "../types/Character";
+/* Components */
 import CharacterName from "./CharacterName";
+
+/* Types */
+import Character from "../types/Character";
 
 interface CharacterCardProps {
   character: Character;

@@ -1,5 +1,7 @@
+/* Dependencies */
 import axios from "axios";
 
+/* Components */
 import type Character from "../types/Character";
 
 const getCharacterData = async (
