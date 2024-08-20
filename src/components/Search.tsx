@@ -51,7 +51,7 @@ const SearchInput: React.FC = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="search-form">
         <input
           className="text-input"
           type="text"
