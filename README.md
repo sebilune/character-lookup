@@ -7,12 +7,11 @@
 3. [Technologies Used](#technologies-used)
 5. [API Integration](#api-integration)
 7. [Installation](#installation)
-8. [Contributing](#contributing)
 9. [License](#license)
 
 ## Introduction
 
-This project is an open-source React application designed to provide information about anime characters. It serves as a learning tool for working with APIs and using TypeScript with React (TSX). Users can search for their favorite anime characters and get detailed information, including their names (both in English and native Japanese), descriptions, images, and the anime they are featured in.
+This project is a React app designed to provide information about anime characters. Users can search for their favorite anime characters and get detailed information, including their names (both in English and native Japanese), descriptions, images, and the anime they are featured in.
 
 ## Features
 
@@ -29,7 +28,6 @@ This project is an open-source React application designed to provide information
 - **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
 - **GraphQL**: A query language for your API, used here to fetch data from the AniList API.
 - **AniList API**: A GraphQL-based API to retrieve anime and manga information.
-
 
 ## API Integration
 
@@ -74,12 +72,6 @@ The query returns the following data about the character:
     - `title`: An object containing:
       - `romaji`: The romaji (Latin alphabet) title of the media.
 
-## Usage
-
-1. **Search**: Type the name of the anime character you are looking for in the search bar.
-2. **Submit**: Press the search button or hit Enter.
-3. **View Results**: The application will display the character's name, native name, description, image, and the anime they appear in.
-
 ## Dependencies
 
 This project utilizes the following dependencies:
@@ -99,9 +91,6 @@ To run this project locally, follow these steps:
   npm i
   npm run dev
 ```
-## Contributing
-
-Contributions are welcome! To contribute to this project, please fork the repository and create a pull request with your changes. Ensure that your code adheres to the existing style and conventions and that all tests pass.
 
 ## License
 
